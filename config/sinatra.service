@@ -1,0 +1,20 @@
+[Unit]
+Description=sinatra
+After=syslog.target network.target
+# Requires=redis-server.service
+# After=redis-server.service
+
+[Service]
+Type=simple
+User=sinatra
+WorkingDirectory=/var/www/sinatra
+# Environment="REDIS_URL=redis://localhost:6379/0"
+# Environment="DATABASE_URL=sqlite://db/sinatra.db"
+SyslogIdentifier=sinatra
+PIDFile=/var/www/sinatra/tmp/pids/unicorn.pid
+ExecStart=/usr/local/bin/bundle exec unicorn -D -c /var/www/sinatra/config/unicorn.rb -E production
+Restart=always
+TimeoutSec=10
+
+[Install]
+WantedBy=multi-user.target
