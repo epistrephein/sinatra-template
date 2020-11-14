@@ -3,6 +3,8 @@ Description=sinatra
 After=syslog.target network.target
 # Requires=redis-server.service
 # After=redis-server.service
+# After=mysqld.service
+# Requires=mysqld.service
 
 [Service]
 Type=simple
