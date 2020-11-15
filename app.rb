@@ -2,6 +2,7 @@
 
 require 'bundler/setup'
 require 'sinatra/base'
+require 'logger'
 
 # require 'sequel'
 # DB ||= Sequel.connect(ENV['DATABASE_URL'])
@@ -14,11 +15,12 @@ require 'sinatra/base'
 # require_relative 'routes/init'
 
 class AppName < Sinatra::Base
-  configure do
-    set :logging, true
+  configure :development do
+    set :logging, Logger::DEBUG
   end
 
   configure :production do
+    set :logging,         true
     set :raise_errors,    false
     set :show_exceptions, false
   end
@@ -28,6 +30,8 @@ class AppName < Sinatra::Base
   set :public_folder, File.join(settings.root, 'public')
 
   before do
+    logger.debug(request.request_method) { "path: #{request.path_info}, params: #{params}" }
+
     @title = 'Sinatra'
   end
 
