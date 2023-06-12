@@ -1,7 +1,9 @@
 AllCops:
   DisplayCopNames: true
   DisplayStyleGuide: true
-  TargetRubyVersion: 2.3
+  NewCops: disable
+  SuggestExtensions: false
+  TargetRubyVersion: 3.0
 
 # Check the indentation of the first argument in a method call.
 Layout/FirstArgumentIndentation:

@@ -3,9 +3,10 @@
 require 'bundler/setup'
 require 'rack/test'
 require 'simplecov'
+
 SimpleCov.start
 
-require_relative '../app.rb'
+require_relative '../app'
 
 ENV['RACK_ENV'] = 'test'
 

@@ -1,15 +1,20 @@
 # frozen_string_literal: true
 
+job_type :rake, 'cd :path && ' \
+                ':environment_variable=:environment ' \
+                ':database_variable=:database ' \
+                ':bundle_command rake :task :output'
+
 set :bundle_command,       '/usr/local/bin/bundle exec'
 set :chronic_options,      hours24: true
 set :output,               'log/rake.log'
 
-# set :environment_variable, 'REDIS_URL'
-# set :environment,          'redis://localhost:6379/0'
+set :environment_variable, 'RACK_ENV'
+set :environment,          'production'
 
-# set :environment_variable, 'DATABASE_URL'
-# set :environment,          'sqlite://db/sinatra.db'
+set :database_variable,    'REDIS_URL'
+set :database,             'redis://localhost:6379/0'
 
 every 1.hour do
-  # rake 'do:something'
+  # rake 'do:something', output: 'log/something.log'
 end
