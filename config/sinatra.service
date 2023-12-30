@@ -7,14 +7,14 @@ After=syslog.target network.target
 # Requires=mysqld.service
 
 [Service]
-Type=simple
+Type=forking
 User=sinatra
+SyslogIdentifier=sinatra
 WorkingDirectory=/var/www/sinatra
+PIDFile=/var/www/sinatra/tmp/pids/unicorn.pid
 # Environment="REDIS_URL=redis://localhost:6379/0"
 # Environment="DATABASE_URL=sqlite://db/sinatra.db"
-SyslogIdentifier=sinatra
-PIDFile=/var/www/sinatra/tmp/pids/unicorn.pid
-ExecStart=/usr/local/bin/bundle exec unicorn -D -c /var/www/sinatra/config/unicorn.rb -E production
+ExecStart=/bin/bash -l -c 'bundle exec unicorn -D -c /var/www/sinatra/config/unicorn.rb -E production'
 Restart=always
 TimeoutSec=10
 
