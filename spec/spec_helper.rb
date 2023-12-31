@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 require 'bundler/setup'
-require 'rack/test'
-require 'simplecov'
 
+require 'simplecov'
 SimpleCov.start
+
+require 'rack/test'
 
 require_relative '../app'
 
