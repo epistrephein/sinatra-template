@@ -31,7 +31,7 @@ class AppName < Sinatra::Base
   before do
     logger.debug(request.request_method) { "path: #{request.path_info}, params: #{params}" }
 
-    @title = 'Sinatra'
+    @title = 'AppName'
   end
 
   get '/' do
@@ -45,12 +45,12 @@ class AppName < Sinatra::Base
 
   # Errors
   not_found do
-    @title = 'Sinatra | 404'
+    @title = 'AppName | 404'
     erb :not_found
   end
 
   error do
-    @title = 'Sinatra | Error'
+    @title = 'AppName | Error'
     erb :error
   end
 end

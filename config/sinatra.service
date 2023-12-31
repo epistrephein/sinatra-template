@@ -1,5 +1,5 @@
 [Unit]
-Description=sinatra
+Description=app_name
 After=syslog.target network.target
 # Requires=redis-server.service
 # After=redis-server.service
@@ -8,13 +8,13 @@ After=syslog.target network.target
 
 [Service]
 Type=forking
-User=sinatra
-SyslogIdentifier=sinatra
-WorkingDirectory=/var/www/sinatra
-PIDFile=/var/www/sinatra/tmp/pids/unicorn.pid
+User=app_name
+SyslogIdentifier=app_name
+WorkingDirectory=/var/www/app_name
+PIDFile=/var/www/app_name/tmp/pids/unicorn.pid
 # Environment="REDIS_URL=redis://localhost:6379/0"
-# Environment="DATABASE_URL=sqlite://db/sinatra.db"
-ExecStart=/bin/bash -l -c 'bundle exec unicorn -D -c /var/www/sinatra/config/unicorn.rb -E production'
+# Environment="DATABASE_URL=sqlite://db/app_name.db"
+ExecStart=/bin/bash -l -c 'bundle exec unicorn -D -c /var/www/app_name/config/unicorn.rb -E production'
 Restart=always
 TimeoutSec=10
 
