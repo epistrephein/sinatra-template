@@ -10,10 +10,6 @@ require 'logger'
 # require 'redis'
 # REDIS ||= Redis.new(url: ENV['REDIS_URL'])
 
-# require_relative 'helpers/init'
-# require_relative 'models/init'
-# require_relative 'routes/init'
-
 class AppName < Sinatra::Base
   configure :development do
     set :logging, Logger::DEBUG
