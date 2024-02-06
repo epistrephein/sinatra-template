@@ -2,8 +2,8 @@
 
 source 'https://rubygems.org'
 
-gem 'rake', '>= 12.0'
-gem 'sinatra', '~> 3.0'
+gem 'rake', '~> 13.0'
+gem 'sinatra', '~> 4.0'
 
 # Use database
 # gem 'sequel', '~> 5.30'
@@ -21,8 +21,8 @@ end
 
 group :development, :test do
   gem 'dotenv', '~> 2.8'
+  gem 'rackup', '~> 2.1'
   gem 'rubocop', '~> 1.19'
-  gem 'thin', '~> 1.8'
 end
 
 group :test do
