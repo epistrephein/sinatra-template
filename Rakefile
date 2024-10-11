@@ -10,4 +10,4 @@ end
 
 Rake.add_rakelib 'tasks/**'
 
-task default: 'server'
+task default: :dev
