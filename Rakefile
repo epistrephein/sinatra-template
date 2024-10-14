@@ -11,3 +11,4 @@ end
 Rake.add_rakelib 'tasks/**'
 
 task default: :dev
+task build: [:spec, :rubocop]
