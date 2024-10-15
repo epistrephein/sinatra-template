@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'bundler/setup'
+require 'irb'
+
+begin
+  require 'dotenv/load'
+rescue LoadError
+  nil
+end
+
+# Start IRB
+IRB.start(__FILE__)
