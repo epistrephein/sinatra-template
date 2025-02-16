@@ -22,6 +22,7 @@ group :development, :test do
   gem 'dotenv', '~> 3.1'
   gem 'rackup', '~> 2.1'
   gem 'rubocop', '~> 1.65'
+  gem 'webrick', '~> 1.9'
 end
 
 group :test do
