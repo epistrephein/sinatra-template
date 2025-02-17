@@ -24,6 +24,8 @@ class AppName < Sinatra::Base
   set :root,          File.dirname(settings.app_file)
   set :public_folder, File.join(settings.root, 'public')
 
+  set :host_authorization, { permitted_hosts: [] }
+
   before do
     logger.debug(request.request_method) { "path: #{request.path_info}, params: #{params}" }
 
