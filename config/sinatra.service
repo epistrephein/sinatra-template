@@ -3,8 +3,8 @@ Description=app_name
 After=syslog.target network.target
 # Requires=redis-server.service
 # After=redis-server.service
-# After=mysqld.service
-# Requires=mysqld.service
+# After=postgresql.service
+# Requires=postgresql.service
 
 [Service]
 Type=forking
