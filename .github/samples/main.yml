@@ -1,0 +1,55 @@
+# Example config for main CI
+# Move this file to .github/workflows/main.yml
+
+name: main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: username
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: rubyproject
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Migrate database
+        run: |
+          bundle exec rake db:migrate
+          bundle exec rake db:version
+      - name: Run RSpec
+        run: bundle exec rake spec
+      - name: Run RuboCop
+        run: bundle exec rake rubocop
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+      - name: Connect and update
+        run: |
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} -p${{ secrets.SSH_PORT }} \
+            "cd ${{ secrets.SSH_WORKING_DIR }} && \
+            git fetch --prune && \
+            git reset --hard @{upstream} && \
+            git clean -d --force && \
+            bundle install"
