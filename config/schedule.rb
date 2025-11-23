@@ -14,6 +14,9 @@ set :environment,          'production'
 set :database_variable,    'REDIS_URL'
 set :database_url,         'redis://localhost:6379/0'
 
+# set :database_variable,    "DATABASE_URL"
+# set :database_url,         "sqlite://db/app_name.db"
+
 every 1.hour do
   # rake 'do:something', output: 'log/something.log'
 end
