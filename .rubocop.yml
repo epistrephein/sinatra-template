@@ -3,7 +3,7 @@ AllCops:
   DisplayStyleGuide: true
   NewCops: disable
   SuggestExtensions: false
-  TargetRubyVersion: 3.0
+  TargetRubyVersion: 3.4
 
 # Check the indentation of the first argument in a method call.
 Layout/FirstArgumentIndentation:
@@ -32,6 +32,10 @@ Layout/MultilineMethodCallIndentation:
 
 # Check for ambiguous regexp literals in the first argument of a method invocation without parentheses.
 Lint/AmbiguousRegexpLiteral:
+  Enabled: false
+
+# Check for constants defined inside a block.
+Lint/ConstantDefinitionInBlock:
   Enabled: false
 
 # A calculated magnitude based on number of assignments, branches, and conditions.
@@ -110,8 +114,16 @@ Style/NumericPredicate:
 Style/RegexpLiteral:
   Enabled: false
 
+# Use double quotes for all string literals.
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
 # Use %i for arrays of symbols.
 Style/SymbolArray:
+  Enabled: false
+
+# Use symbols as procs when possible.
+Style/SymbolProc:
   Enabled: false
 
 # Favor modifier while/until usage when you have a single-line body.

@@ -1,22 +1,22 @@
 # frozen_string_literal: true
 
-require 'bundler/setup'
+require "bundler/setup"
 
-require 'simplecov'
+require "simplecov"
 SimpleCov.start
 
-require 'rack/test'
+require "rack/test"
 
-require_relative '../app'
+require_relative "../app"
 
-ENV['RACK_ENV'] = 'test'
+ENV["RACK_ENV"] = "test"
 
 RSpec.configure do |config|
   # Make Rack::Test available to all spec contexts
   config.include Rack::Test::Methods
 
   # Enable flags like --only-failures and --next-failure
-  config.example_status_persistence_file_path = '.rspec_status'
+  config.example_status_persistence_file_path = ".rspec_status"
 
   # Disable RSpec exposing methods globally on `Module` and `main`
   config.disable_monkey_patching!
@@ -25,7 +25,7 @@ RSpec.configure do |config|
   config.filter_run_when_matching :focus
 
   # Use the documentation formatter for detailed output
-  config.default_formatter = 'doc'
+  config.default_formatter = "doc"
 
   # Run specs in random order to surface order dependencies
   config.order = :random

@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require 'bundler/setup'
-require 'irb'
+require "bundler/setup"
+require "irb"
 
 begin
-  require 'dotenv/load'
+  require "dotenv/load"
 rescue LoadError
   nil
 end

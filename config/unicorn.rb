@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'fileutils'
+require "fileutils"
 
-APP_DIR = File.expand_path('..', __dir__)
+APP_DIR = File.expand_path("..", __dir__)
 
 worker_processes 2
 working_directory APP_DIR

@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-require 'bundler/setup'
+require "bundler/setup"
 
 begin
-  require 'dotenv/load'
+  require "dotenv/load"
 rescue LoadError
   nil
 end
 
-Rake.add_rakelib 'tasks/**'
+Rake.add_rakelib "tasks/**"
 
 task default: :dev
 task test: [:spec, :rubocop]
