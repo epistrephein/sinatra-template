@@ -7,14 +7,14 @@ After=syslog.target network.target
 # Requires=postgresql.service
 
 [Service]
-Type=forking
+Type=simple
 User=app_name
 SyslogIdentifier=app_name
 WorkingDirectory=/var/www/app_name
-PIDFile=/var/www/app_name/tmp/pids/unicorn.pid
+Environment="RACK_ENV=production"
 # Environment="REDIS_URL=redis://localhost:6379/0"
 # Environment="DATABASE_URL=sqlite://db/app_name.db"
-ExecStart=/bin/bash -l -c 'bundle exec unicorn -D -c /var/www/app_name/config/unicorn.rb -E production'
+ExecStart=/bin/bash -l -c 'bundle exec puma -C config/puma.rb >> log/puma.log 2>&1'
 Restart=always
 TimeoutSec=10
 
