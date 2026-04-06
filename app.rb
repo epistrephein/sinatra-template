@@ -16,6 +16,7 @@ class AppName < Sinatra::Base
   end
 
   configure :production do
+    set :logging,         true
     set :raise_errors,    false
     set :show_exceptions, false
   end
