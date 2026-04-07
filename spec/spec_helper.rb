@@ -2,13 +2,13 @@
 
 require "bundler/setup"
 
+ENV["RACK_ENV"] ||= "test"
+
 require "rack/test"
 require "simplecov"
 SimpleCov.start
 
 require_relative "../app"
-
-ENV["RACK_ENV"] = "test"
 
 RSpec.configure do |config|
   # Make Rack::Test available to all spec contexts

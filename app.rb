@@ -25,8 +25,6 @@ class AppName < Sinatra::Base
   set :root,          File.dirname(settings.app_file)
   set :public_folder, File.join(settings.root, "public")
 
-  set :host_authorization, { permitted_hosts: [] }
-
   before do
     logger.debug(request.request_method) { "path: #{request.path_info}, params: #{params}" }
 
@@ -42,7 +40,6 @@ class AppName < Sinatra::Base
     halt :ok
   end
 
-  # Errors
   not_found do
     @title = "AppName | 404"
     erb :not_found
