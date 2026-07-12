@@ -44,9 +44,4 @@ class AppName < Sinatra::Base
     @title = "AppName | 404"
     erb :not_found
   end
-
-  error do
-    @title = "AppName | Error"
-    erb :error
-  end
 end
