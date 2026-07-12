@@ -10,5 +10,8 @@ rescue LoadError
   nil
 end
 
+# Load the application
+require_relative "../app"
+
 # Start IRB
 IRB.start(__FILE__)
