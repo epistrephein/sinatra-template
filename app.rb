@@ -11,19 +11,7 @@ require "logger"
 # REDIS ||= Redis.new(url: ENV["REDIS_URL"])
 
 class AppName < Sinatra::Base
-  configure :development do
-    set :logging, Logger::DEBUG
-  end
-
-  configure :production do
-    set :logging,         true
-    set :raise_errors,    false
-    set :show_exceptions, false
-  end
-
-  set :app_file,      __FILE__
-  set :root,          File.dirname(settings.app_file)
-  set :public_folder, File.join(settings.root, "public")
+  set :logging, Logger::DEBUG if development?
 
   before do
     logger.debug(request.request_method) { "path: #{request.path_info}, params: #{params}" }

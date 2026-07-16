@@ -24,4 +24,7 @@ if ENV["RACK_ENV"] == "production"
   # Set socket and PID paths
   bind "unix:#{APP_DIR}/tmp/sockets/puma.sock"
   pidfile "#{APP_DIR}/tmp/pids/puma.pid"
+
+  # Log requests to STDOUT
+  log_requests true
 end
