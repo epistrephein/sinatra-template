@@ -7,7 +7,7 @@ location = /app_name {
 
 # Route root requests to the Sinatra app
 location = /app_name/ {
-    try_files /__force_sinatra__ @app_name;
+    try_files /dev/null @app_name;
 }
 
 # Serve static assets from the public directory via nginx, if they exist
